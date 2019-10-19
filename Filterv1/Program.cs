@@ -8,9 +8,17 @@ namespace Filterv1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the Image Filter");
+            Console.WriteLine("Created by: L. Diaz");
+            Console.WriteLine("===========================");
+            Console.WriteLine("- Image filter only works with .jpg images...");
+            Console.WriteLine("- Please make sure to include images in a folder named res within the");
+            Console.WriteLine(" same directory as this executable file.");
+            Console.WriteLine("\n Enter the file name without file extension:");
+            String src = Console.ReadLine();
             try
             {
-                Image srcImage = Image.FromFile("res/mountains.jpg");
+                Image srcImage = Image.FromFile("res/" + src + ".jpg");
                 Image filteredImage;
                 Bitmap bmpImage = new Bitmap(srcImage);
 
@@ -30,7 +38,8 @@ namespace Filterv1
                 }
 
                 filteredImage = (Image) filteredBitmap;
-                filteredImage.Save("res/mountains-nored.jpg", ImageFormat.Jpeg);
+                String fileName = "res/" + src + "-nored.jpg";
+                filteredImage.Save(fileName, ImageFormat.Jpeg);
                 Console.WriteLine("All good");
                 Console.ReadKey();
             }
